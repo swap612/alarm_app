@@ -2,14 +2,20 @@ use strict;
 use warnings;
 
 $\="\n";
+# Edit your browser cmd
+my $browser ='google-chrome';
 
+# alarm sub-routine
 sub play_alarm{
 	#print shift @_;
 	my $time = shift @_;
-	print "$time";
-	sleep($time);	
+	my $link= shift @_;
 	
-	#	exec "firefox 'https://www.youtube.com/watch?v=rFU28HBP7B0&list=RDrFU28HBP7B0&start_radio=1'";
+	#wait for the given time 	
+	sleep($time);
+
+	# WakeUp Code	
+	exec "$browser $link"
 
 }
 
@@ -19,23 +25,17 @@ my $file='links.txt';
 my $lcount = `wc -l < $file`;
 die "wc failed: $?" if $?;
 chomp($lcount);
-print "Line count: $lcount";
+#print "Line count: $lcount";
 
 # generating random number and selecting the random link from file
 my $id = int(rand($lcount)+1);
-print $id;
+#print $id;
 my $link=`sed -n ${id}p $file`;
 chomp $link;
-print $link;
+#print $link;
+
+#get the time of alarm 
+my $time = 5;
 
 # playing the alarm
-play_alarm $time $link
-=begin
-
-open FH, '<', $file or die $!;
-while( $link =<FH>){
-	chomp $link;
-	print $link;
-}
-=cut
-
+play_alarm($time, $link);
