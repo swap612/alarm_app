@@ -41,10 +41,10 @@ if($ch == 1){
 	my $hh = shift @tc;
 	my $mm = shift @tc;
 	my $ss = shift @tc;
-	print "HH:$hh MM:$mm SS:$ss";
+	#print "HH:$hh MM:$mm SS:$ss";
  	#convert the timer into seconds
 	my $tsecs = ($hh*60+$mm)*60+$ss	;
-	print "Secs:$tsecs";
+	#print "Secs:$tsecs";
 	$time=int($tsecs);
 }
 elsif($ch == 2){
@@ -61,10 +61,10 @@ elsif($ch == 2){
         my $hh = shift @tc;
         my $mm = shift @tc;
         my $ss = shift @tc;
-        print "HH:$hh MM:$mm SS:$ss";
+	#print "HH:$hh MM:$mm SS:$ss";
         #convert the timer into seconds
         my $tsecs = ($hh*60+$mm)*60+$ss ;
-        print "Secs:$tsecs";
+	#print "Secs:$tsecs";
         $time=$tsecs;
 
 	#get current time
@@ -72,10 +72,10 @@ elsif($ch == 2){
 	my $min;
 	my $hour;
 	($sec,$min,$hour) = localtime();
-  	print "$hour:$min:$sec";	
+	#print "$hour:$min:$sec";	
 	#convert the timer into seconds
         my $curr_secs = ($hour*60+$min)*60+$sec ;
-        print "Secs:$curr_secs";
+	#print "Secs:$curr_secs";
 	#Calc Time Difference
 	my $tdiff = $tsecs - $curr_secs;
 	if($tdiff<0){
@@ -83,7 +83,7 @@ elsif($ch == 2){
 		exit 1;
 	}
 	else{
-		print "Secs:$tdiff";
+		#print "Secs:$tdiff";
 		$time=int($tdiff);
 	}
 }
